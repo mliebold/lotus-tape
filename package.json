@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
+    "ci": "payload migrate && npm run build"
   },
   "dependencies": {
     "@payloadcms/db-vercel-postgres": "^3.11.0",
@@ -20,6 +22,7 @@
     "@vercel/blob": "^0.27.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "graphql": "^16.10.0",
     "lucide-react": "^0.469.0",
     "next": "15.1.2",
@@ -35,6 +38,7 @@
     "@types/node": "^20",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "15.1.2",
     "postcss": "^8",
