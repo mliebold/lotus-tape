@@ -1,5 +1,9 @@
-// import heroVideo from "@/public/videos/";
+import Shows from "@/components/landing/shows";
 
 export default function Home() {
-  return <></>;
+  return (
+    <>
+      <Shows />
+    </>
+  );
 }
