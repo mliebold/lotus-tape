@@ -14,15 +14,15 @@ import logo from "@/public/logo.png";
 
 const Navbar = () => {
   return (
-    <section className="py-4">
+    <section className="py-4 absolute w-full z-10">
       <div className="container mx-auto">
         <nav className="hidden justify-between lg:flex">
           {/* <div className="flex items-center gap-6"> */}
           <div className="flex items-center gap-2">
-            {/* <div className="w-14 h-10 relative">
+            <div className="w-20 h-14 relative">
               <Image src={logo} fill alt="Lotus Tape Logo" />
-            </div> */}
-            <span className="text-xl font-bold">Lotus Tape</span>
+            </div>
+            {/* <span className="text-xl font-bold">Lotus Tape</span> */}
           </div>
           <div className="flex items-center">
             <a
@@ -70,12 +70,14 @@ const Navbar = () => {
         </nav>
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold">Lotus Tape</span>
+            <div className="flex items-center w-14 h-10 sm:w-20 sm:h-14 relative">
+              {/* <div className="w-14 h-10 sm:w-20 sm:h-14 relative"> */}
+              <Image src={logo} fill alt="Lotus Tape Logo" />
+              {/* </div> */}
             </div>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className="mr-2">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
