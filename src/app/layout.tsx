@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Lotus Tape",
@@ -24,6 +25,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
