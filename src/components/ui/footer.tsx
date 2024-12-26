@@ -1,45 +1,8 @@
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaSoundcloud,
-  FaSpotify,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaInstagram, FaSoundcloud, FaSpotify } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiApplemusic } from "react-icons/si";
 import logo from "@/public/logo.png";
 import Image from "next/image";
-
-const sections = [
-  {
-    title: "Product",
-    links: [
-      { name: "Overview", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Marketplace", href: "#" },
-      { name: "Features", href: "#" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { name: "About", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
-      { name: "Advertise", href: "#" },
-      { name: "Privacy", href: "#" },
-    ],
-  },
-];
 
 const Footer = () => {
   return (

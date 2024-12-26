@@ -12,7 +12,7 @@ export default function CTASubscribe() {
             </h3>
             <p className="text-muted-foreground lg:text-lg">
               Get the latest info on upcoming shows and new music straight to
-              your inbox. Don't miss out on what's next.
+              your inbox. Don&apos;t miss out on what&apos;s next.
             </p>
           </div>
           <div className="shrink-0">

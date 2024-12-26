@@ -1,12 +1,5 @@
 import { Button } from "../ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../ui/table";
+import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 
 export default function Shows() {
   return (
