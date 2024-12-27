@@ -11,6 +11,26 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+import Link from "next/link";
+
+const navigation = [
+  {
+    name: "Home",
+    href: "",
+  },
+  {
+    name: "Shows",
+    href: "/#upcoming-shows",
+  },
+  {
+    name: "Music",
+    href: "/music",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
 
 const Navbar = () => {
   return (
@@ -25,42 +45,21 @@ const Navbar = () => {
             {/* <span className="text-xl font-bold">Lotus Tape</span> */}
           </div>
           <div className="flex items-center">
-            <a
-              className={cn(
-                "text-muted-foreground",
-                navigationMenuTriggerStyle,
-                buttonVariants({
-                  variant: "ghost",
-                })
-              )}
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              className={cn(
-                "text-muted-foreground",
-                navigationMenuTriggerStyle,
-                buttonVariants({
-                  variant: "ghost",
-                })
-              )}
-              href="#"
-            >
-              Music
-            </a>
-            <a
-              className={cn(
-                "text-muted-foreground",
-                navigationMenuTriggerStyle,
-                buttonVariants({
-                  variant: "ghost",
-                })
-              )}
-              href="#"
-            >
-              Merch
-            </a>
+            {navigation.map((nav) => (
+              <a
+                key={nav.name}
+                className={cn(
+                  "text-muted-foreground",
+                  navigationMenuTriggerStyle,
+                  buttonVariants({
+                    variant: "ghost",
+                  })
+                )}
+                href={nav.href}
+              >
+                {nav.name}
+              </a>
+            ))}
           </div>
           {/* </div> */}
           {/* <div className="flex gap-2">
@@ -94,15 +93,15 @@ const Navbar = () => {
                   </SheetTitle>
                 </SheetHeader>
                 <div className="mb-8 mt-8 flex flex-col gap-4">
-                  <a href="#" className="font-semibold">
-                    Home
-                  </a>
-                  <a href="#" className="font-semibold">
-                    Music
-                  </a>
-                  <a href="#" className="font-semibold">
-                    Merch
-                  </a>
+                  {navigation.map((nav) => (
+                    <Link
+                      key={nav.name}
+                      href={nav.href}
+                      className="font-semibold"
+                    >
+                      {nav.name}
+                    </Link>
+                  ))}
                 </div>
                 <div className="border-t pt-4">
                   <div className="grid grid-cols-2 justify-start">

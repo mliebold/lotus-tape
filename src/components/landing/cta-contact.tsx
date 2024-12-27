@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import lotusTapeImage from "@/public/lotus-tape-stage.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTAContact() {
   return (
@@ -22,7 +23,9 @@ export default function CTAContact() {
               Lets get connected
             </h2>
             <div className="flex flex-col justify-center gap-2 sm:flex-row">
-              <Button size="lg">Contact</Button>
+              <Button size="lg" asChild>
+                <Link href="/contact">Contact</Link>
+              </Button>
               {/* <Button
                 size="lg"
                 variant="outline"
