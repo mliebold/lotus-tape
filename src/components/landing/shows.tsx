@@ -19,7 +19,10 @@ export default async function Shows() {
   });
 
   return (
-    <div className="grid gap-20 place-items-center py-32 px-20">
+    <div
+      id="upcoming-shows"
+      className="grid gap-20 place-items-center py-32 px-20"
+    >
       <h1 className="text-4xl font-extrabold">Upcoming Shows</h1>
       {shows.totalDocs > 0 ? (
         <Table>
