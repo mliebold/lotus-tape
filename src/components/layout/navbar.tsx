@@ -13,6 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
+import fullLogo from "@/public/logo.png";
 import logo from "@/public/logo-name.png";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -116,11 +117,11 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>
+                  <SheetTitle className="flex justify-center">
                     <Image
-                      src={logo}
+                      src={fullLogo}
                       sizes="100vw"
-                      className="w-full h-10"
+                      className="w-auto h-32"
                       alt="Lotus Tape Logo Drawer"
                     />
                   </SheetTitle>
