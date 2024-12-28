@@ -6,6 +6,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -126,16 +127,14 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                 </SheetHeader>
                 <div className="mb-8 mt-8 flex flex-col gap-4">
                   {navigation.map((nav) => (
-                    <Link
-                      key={nav.name}
-                      href={nav.href}
-                      className="font-semibold"
-                    >
-                      {nav.name}
-                    </Link>
+                    <SheetClose key={nav.name} asChild>
+                      <Link href={nav.href} className="font-semibold">
+                        {nav.name}
+                      </Link>
+                    </SheetClose>
                   ))}
                 </div>
-                <div className="border-t pt-4">
+                {/* <div className="border-t pt-4">
                   <div className="grid grid-cols-2 justify-start">
                     <a
                       className={cn(
@@ -204,7 +203,7 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                       Cookie Settings
                     </a>
                   </div>
-                </div>
+                </div> */}
               </SheetContent>
             </Sheet>
           </div>
