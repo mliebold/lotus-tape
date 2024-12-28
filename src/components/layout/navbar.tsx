@@ -59,12 +59,14 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
           {/* <div className="flex items-center gap-6"> */}
           <div className="flex items-center gap-2">
             {/* <div className="h-14 relative"> */}
-            <Image
-              src={logo}
-              sizes="100vw"
-              className="w-full h-10"
-              alt="Lotus Tape Logo"
-            />
+            <Link href="/">
+              <Image
+                src={logo}
+                sizes="100vw"
+                className="w-full h-10"
+                alt="Lotus Tape Logo"
+              />
+            </Link>
             {/* </div> */}
             {/* <span className="text-xl font-bold">Lotus Tape</span> */}
           </div>
@@ -95,12 +97,14 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               {/* <div className="w-14 h-10 sm:w-20 sm:h-14 relative"> */}
-              <Image
-                src={logo}
-                sizes="100vw"
-                className="w-full h-10"
-                alt="Lotus Tape Logo"
-              />
+              <Link href="/">
+                <Image
+                  src={logo}
+                  sizes="100vw"
+                  className="w-full h-10"
+                  alt="Lotus Tape Logo"
+                />
+              </Link>
               {/* </div> */}
             </div>
             <Sheet>
