@@ -111,7 +111,11 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
             </div>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="mr-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="mr-2 h-10 w-10"
+                >
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
