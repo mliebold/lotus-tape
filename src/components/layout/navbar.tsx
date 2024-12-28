@@ -1,3 +1,5 @@
+"use client";
+
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -12,6 +14,7 @@ import {
 import Image from "next/image";
 import logo from "@/public/logo-name.png";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navigation = [
   {
@@ -32,9 +35,25 @@ const navigation = [
   },
 ];
 
-const Navbar = ({}) => {
+const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   return (
-    <section className="py-4 absolute w-full z-10">
+    // <section
+    //   className={`py-4 w-full z-10 ${mode == "General" || isScrolled ? "relative" : "absolute"}`}
+    // >
+    <section
+      className={`${isScrolled || mode == "General" ? "bg-background" : "bg-transparent"} fixed w-full py-4 z-50 transition-all duration-300`}
+    >
       <div className="container mx-auto">
         <nav className="hidden justify-between lg:flex">
           {/* <div className="flex items-center gap-6"> */}
