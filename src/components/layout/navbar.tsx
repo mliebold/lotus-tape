@@ -54,7 +54,7 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
     //   className={`py-4 w-full z-10 ${mode == "General" || isScrolled ? "relative" : "absolute"}`}
     // >
     <section
-      className={`${isScrolled || mode == "General" ? "bg-background" : "bg-transparent"} fixed w-full py-4 z-50 transition-all duration-300`}
+      className={`${isScrolled || mode == "General" ? "bg-background border-b" : "bg-transparent"} fixed w-full py-4 z-50 transition-all duration-300`}
     >
       <div className="container mx-auto">
         <nav className="hidden justify-between lg:flex">
