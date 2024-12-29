@@ -11,9 +11,9 @@ export default function CTAContact() {
           <Image
             src={lotusTapeImage}
             alt="Background"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
           />
         </div>
         <div className="relative z-10 flex h-[620px] xl:h-svh items-center justify-center bg-black/60">

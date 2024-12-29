@@ -119,7 +119,10 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
+              <SheetContent
+                className="overflow-y-auto"
+                aria-describedby={undefined}
+              >
                 <SheetHeader>
                   <SheetTitle className="flex justify-center">
                     <Image

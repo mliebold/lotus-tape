@@ -23,7 +23,7 @@ export default async function Gallery() {
           sizes="100vw"
           fill
           alt="Landscape image"
-          className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+          className="object-cover object-center hover:shadow-lg transition-transform duration-300 hover:scale-105"
         />
       </div>,
     ];
@@ -40,7 +40,7 @@ export default async function Gallery() {
             fill
             sizes="50vw"
             alt="Portrait image"
-            className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+            className="object-cover object-center hover:shadow-lg transition-transform duration-300 hover:scale-105"
           />
         </div>,
         <div
@@ -52,7 +52,7 @@ export default async function Gallery() {
             fill
             sizes="50vw"
             alt="Portrait image"
-            className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+            className="object-cover object-center hover:shadow-lg transition-transform duration-300 hover:scale-105"
           />
         </div>
       );
