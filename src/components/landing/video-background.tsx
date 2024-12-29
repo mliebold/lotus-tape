@@ -15,7 +15,7 @@ export default async function VideoBackground() {
       playsInline
       loop
       aria-label="Video player"
-      className="object-cover h-screen w-full sm:object-cover sm:h-screen sm:w-screen z-0"
+      className="object-cover h-screen w-full sm:object-cover sm:h-screen sm:w-screen z-0 mb-32"
     >
       <source src={url} type="video/mp4" />
       Your browser does not support the video tag
