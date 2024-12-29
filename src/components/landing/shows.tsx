@@ -19,41 +19,42 @@ export default async function Shows() {
   });
 
   return (
-    <div
-      id="upcoming-shows"
-      className="grid gap-20 place-items-center py-32 px-20"
-    >
-      <h1 className="text-4xl font-extrabold">Upcoming Shows</h1>
-      {shows.totalDocs > 0 ? (
-        <Table>
-          <TableBody>
-            {shows.docs.map((show) => (
-              <TableRow key={show.id}>
-                <TableCell>{format(show.date!, "M/dd/yyyy")}</TableCell>
-                <TableCell>{show.venue}</TableCell>
-                <TableCell>{show.location}</TableCell>
-                <TableCell>
-                  {show.ticketLink ? (
-                    <Button asChild>
-                      <Link
-                        href={show.ticketLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Tickets
-                      </Link>
-                    </Button>
-                  ) : (
-                    <p>No ticket link</p>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <h4 className="text-lg text-muted-foreground">No upcoming shows</h4>
-      )}
-    </div>
+    <section id="upcoming-shows" className="py-32">
+      <div className="container mx-auto">
+        <div className="grid gap-20 place-items-center px-8 lg:px-16">
+          <h1 className="text-4xl font-extrabold">Upcoming Shows</h1>
+          {shows.totalDocs > 0 ? (
+            <Table>
+              <TableBody>
+                {shows.docs.map((show) => (
+                  <TableRow key={show.id}>
+                    <TableCell>{format(show.date!, "M/dd/yyyy")}</TableCell>
+                    <TableCell>{show.venue}</TableCell>
+                    <TableCell>{show.location}</TableCell>
+                    <TableCell>
+                      {show.ticketLink ? (
+                        <Button asChild>
+                          <Link
+                            href={show.ticketLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Tickets
+                          </Link>
+                        </Button>
+                      ) : (
+                        <p>No ticket link</p>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          ) : (
+            <h4 className="text-lg text-muted-foreground">No upcoming shows</h4>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
