@@ -102,8 +102,8 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
               <Link href="/">
                 <Image
                   src={logo}
-                  sizes="100vw"
-                  className="w-full h-10"
+                  sizes="20rem"
+                  className="w-auto h-7 sm:h-8 md:w-auto md:h-auto"
                   alt="Lotus Tape Logo"
                 />
               </Link>
