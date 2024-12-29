@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import Navbar from "@/components/ui/navbar";
-import Footer from "@/components/ui/footer";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "Lotus Tape",
@@ -23,7 +22,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
           <Footer />
         </ThemeProvider>

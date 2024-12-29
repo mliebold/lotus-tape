@@ -1,17 +1,22 @@
+"use client";
+
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import fullLogo from "@/public/logo.png";
+import logo from "@/public/logo-name.png";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navigation = [
   {
@@ -32,16 +37,39 @@ const navigation = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   return (
-    <section className="py-4 absolute w-full z-10">
+    // <section
+    //   className={`py-4 w-full z-10 ${mode == "General" || isScrolled ? "relative" : "absolute"}`}
+    // >
+    <section
+      className={`${isScrolled || mode == "General" ? "bg-background border-b" : "bg-transparent"} fixed w-full py-4 z-50 transition-all duration-300`}
+    >
       <div className="container mx-auto">
         <nav className="hidden justify-between lg:flex">
           {/* <div className="flex items-center gap-6"> */}
           <div className="flex items-center gap-2">
-            <div className="w-20 h-14 relative">
-              <Image src={logo} fill alt="Lotus Tape Logo" />
-            </div>
+            {/* <div className="h-14 relative"> */}
+            <Link href="/">
+              <Image
+                src={logo}
+                sizes="100vw"
+                className="w-full h-10"
+                alt="Lotus Tape Logo"
+              />
+            </Link>
+            {/* </div> */}
             {/* <span className="text-xl font-bold">Lotus Tape</span> */}
           </div>
           <div className="flex items-center">
@@ -69,41 +97,49 @@ const Navbar = () => {
         </nav>
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <div className="flex items-center w-14 h-10 sm:w-20 sm:h-14 relative">
+            <div className="flex items-center">
               {/* <div className="w-14 h-10 sm:w-20 sm:h-14 relative"> */}
-              <Image src={logo} fill alt="Lotus Tape Logo" />
+              <Link href="/">
+                <Image
+                  src={logo}
+                  sizes="100vw"
+                  className="w-full h-10"
+                  alt="Lotus Tape Logo"
+                />
+              </Link>
               {/* </div> */}
             </div>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="mr-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="mr-2 h-10 w-10"
+                >
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>
-                    <div className="flex items-center justify-center gap-2">
-                      <Image
-                        src={logo}
-                        width={150}
-                        alt="Lotus Tape Logo Drawer"
-                      />
-                    </div>
+                  <SheetTitle className="flex justify-center">
+                    <Image
+                      src={fullLogo}
+                      sizes="100vw"
+                      className="w-auto h-32"
+                      alt="Lotus Tape Logo Drawer"
+                    />
                   </SheetTitle>
                 </SheetHeader>
                 <div className="mb-8 mt-8 flex flex-col gap-4">
                   {navigation.map((nav) => (
-                    <Link
-                      key={nav.name}
-                      href={nav.href}
-                      className="font-semibold"
-                    >
-                      {nav.name}
-                    </Link>
+                    <SheetClose key={nav.name} asChild>
+                      <Link href={nav.href} className="font-semibold">
+                        {nav.name}
+                      </Link>
+                    </SheetClose>
                   ))}
                 </div>
-                <div className="border-t pt-4">
+                {/* <div className="border-t pt-4">
                   <div className="grid grid-cols-2 justify-start">
                     <a
                       className={cn(
@@ -172,7 +208,7 @@ const Navbar = () => {
                       Cookie Settings
                     </a>
                   </div>
-                </div>
+                </div> */}
               </SheetContent>
             </Sheet>
           </div>

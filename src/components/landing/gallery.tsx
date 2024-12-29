@@ -6,7 +6,7 @@ export default async function Gallery() {
     prefix: "photos/gallery/portrait",
   });
   const { blobs: landscapeBlobs } = await list({
-    prefix: "photos/gallery/portrait",
+    prefix: "photos/gallery/landscape",
   });
 
   const galleryElements = landscapeBlobs.flatMap((landscape, index) => {
@@ -16,17 +16,15 @@ export default async function Gallery() {
       // Add the landscape image
       <div
         key={`landscape-${index}`}
-        className="col-span-2 h-[30rem] relative overflow-hidden"
+        className="col-span-2 h-[40rem] relative overflow-hidden"
       >
-        <div className="h-full w-full relative hover:shadow-lg transition-transform duration-300 hover:scale-105">
-          <Image
-            src={landscape.url}
-            fill
-            alt="Landscape image"
-            className="object-cover"
-          />
-        </div>
-        ,
+        <Image
+          src={landscape.url}
+          sizes="100vw"
+          fill
+          alt="Landscape image"
+          className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+        />
       </div>,
     ];
 
@@ -37,27 +35,25 @@ export default async function Gallery() {
           key={`portrait-left-${index}`}
           className="h-[40rem] relative overflow-hidden"
         >
-          <div className="h-full w-full relative hover:shadow-lg transition-transform duration-300 hover:scale-105">
-            <Image
-              src={portraitPair[0].url}
-              fill
-              alt="Portrait image"
-              className="object-cover"
-            />
-          </div>
+          <Image
+            src={portraitPair[0].url}
+            fill
+            sizes="50vw"
+            alt="Portrait image"
+            className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+          />
         </div>,
         <div
           key={`portrait-right-${index}`}
           className="h-[40rem] relative overflow-hidden"
         >
-          <div className="h-full w-full relative hover:shadow-lg transition-transform duration-300 hover:scale-105">
-            <Image
-              src={portraitPair[1].url}
-              fill
-              alt="Portrait image"
-              className="object-cover"
-            />
-          </div>
+          <Image
+            src={portraitPair[1].url}
+            fill
+            sizes="50vw"
+            alt="Portrait image"
+            className="hover:shadow-lg transition-transform duration-300 hover:scale-105"
+          />
         </div>
       );
     }
@@ -65,5 +61,9 @@ export default async function Gallery() {
     return elements;
   });
 
-  return <div className="grid grid-cols-2 gap-2 px-2">{galleryElements}</div>;
+  return (
+    <section className="grid grid-cols-2 xl:grid-cols-4 py-32">
+      {galleryElements}
+    </section>
+  );
 }
