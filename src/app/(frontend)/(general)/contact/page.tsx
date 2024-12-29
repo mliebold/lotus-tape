@@ -2,7 +2,7 @@ import ContactForm from "@/components/forms/contact";
 
 export default function ContactPage() {
   return (
-    <section className="py-32 mx-5 sm:mx-auto">
+    <section className="py-16 mt-[4.5rem] mx-5 sm:mx-auto">
       <div className="container mx-auto">
         <div className="mx-auto flex max-w-screen-xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">

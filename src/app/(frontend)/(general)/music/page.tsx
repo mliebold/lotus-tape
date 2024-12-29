@@ -9,7 +9,7 @@ export default function MusicPage() {
   ];
 
   return (
-    <div className="grid py-32 mx-5">
+    <section className="grid py-16 mt-[4.5rem] mx-5">
       <h1 className="text-5xl font-extrabold">Music</h1>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-10">
         {trackUuids.map((trackUuid) => (
@@ -27,6 +27,6 @@ export default function MusicPage() {
           ></iframe>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
