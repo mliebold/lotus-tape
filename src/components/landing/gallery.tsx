@@ -6,7 +6,7 @@ export default async function Gallery() {
     prefix: "photos/gallery/portrait",
   });
   const { blobs: landscapeBlobs } = await list({
-    prefix: "photos/gallery/portrait",
+    prefix: "photos/gallery/landscape",
   });
 
   const galleryElements = landscapeBlobs.flatMap((landscape, index) => {
