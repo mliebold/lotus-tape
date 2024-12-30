@@ -1,17 +1,35 @@
-import { list } from "@vercel/blob";
 import Image from "next/image";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
+
+const payload = await getPayload({ config: configPromise });
 
 export default async function Gallery() {
-  const { blobs: portraitBlobs } = await list({
-    prefix: "photos/gallery/portrait",
-  });
-  const { blobs: landscapeBlobs } = await list({
-    prefix: "photos/gallery/landscape",
+  const landscapeImages = await payload.find({
+    collection: "gallery-images",
+    sort: "order",
+    where: {
+      and: [
+        { orientation: { equals: "landscape" } },
+        { visible: { equals: true } },
+      ],
+    },
   });
 
-  const galleryElements = landscapeBlobs.flatMap((landscape, index) => {
-    if (landscape.size == 0) return;
-    const portraitPair = portraitBlobs.slice(index * 2, index * 2 + 2);
+  const portraitImages = await payload.find({
+    collection: "gallery-images",
+    sort: "order",
+    where: {
+      and: [
+        { orientation: { equals: "portrait" } },
+        { visible: { equals: true } },
+      ],
+    },
+  });
+
+  const galleryElements = landscapeImages.docs.flatMap((landscape, index) => {
+    if (landscape.filesize == 0) return;
+    const portraitPair = portraitImages.docs.slice(index * 2, index * 2 + 2);
     const elements = [
       // Add the landscape image
       <div
@@ -19,7 +37,7 @@ export default async function Gallery() {
         className="col-span-2 h-[40rem] relative overflow-hidden"
       >
         <Image
-          src={landscape.url}
+          src={`${process.env.BASE_URL}${landscape.url}`}
           sizes="100vw"
           fill
           alt="Landscape image"
@@ -36,7 +54,7 @@ export default async function Gallery() {
           className="h-[40rem] relative overflow-hidden"
         >
           <Image
-            src={portraitPair[0].url}
+            src={`${process.env.BASE_URL}${portraitPair[0].url}`}
             fill
             sizes="50vw"
             alt="Portrait image"
@@ -48,7 +66,7 @@ export default async function Gallery() {
           className="h-[40rem] relative overflow-hidden"
         >
           <Image
-            src={portraitPair[1].url}
+            src={`${process.env.BASE_URL}${portraitPair[1].url}`}
             fill
             sizes="50vw"
             alt="Portrait image"
