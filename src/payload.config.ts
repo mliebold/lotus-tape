@@ -1,4 +1,4 @@
-// storage-adapter-import-placeholder
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 
 import { Users } from "./collections/Users";
-import { Media } from "./collections/Media";
+import { GalleryImages } from "./collections/GalleryImages";
 import { Shows } from "./collections/Show";
 
 const filename = fileURLToPath(import.meta.url);
@@ -21,7 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Shows],
+  collections: [Users, GalleryImages, Shows],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -35,6 +35,15 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    vercelBlobStorage({
+      collections: {
+        "gallery-images": {
+          prefix: "photos/gallery",
+        },
+      },
+      // addRandomSuffix: true, // At the time I built this, this is broken...
+      // It adds the prefix to filename and causes file to not be found in blob storage
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
   ],
 });
