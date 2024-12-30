@@ -20,7 +20,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "lotus-tape.vercel.app",
         port: "",
-        pathname: "lotus-tape.vercel.app/api/gallery-images/**",
+        pathname: "/api/gallery-images/**",
       },
     ],
   },
