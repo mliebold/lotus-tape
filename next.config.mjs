@@ -10,6 +10,18 @@ const nextConfig = {
         pathname: "/photos/**",
         search: "",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/api/gallery-images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lotus-tape.vercel.app",
+        port: "",
+        pathname: "lotus-tape.vercel.app/api/gallery-images/**",
+      },
     ],
   },
 };
