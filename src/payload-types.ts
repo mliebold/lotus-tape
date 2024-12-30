@@ -12,7 +12,7 @@ export interface Config {
   };
   collections: {
     users: User;
-    media: Media;
+    'gallery-images': GalleryImage;
     shows: Show;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -21,7 +21,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
+    'gallery-images': GalleryImagesSelect<false> | GalleryImagesSelect<true>;
     shows: ShowsSelect<false> | ShowsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -78,11 +78,15 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "gallery-images".
  */
-export interface Media {
+export interface GalleryImage {
   id: number;
   alt: string;
+  orientation: 'landscape' | 'portrait';
+  order?: number | null;
+  visible?: boolean | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -120,8 +124,8 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
+        relationTo: 'gallery-images';
+        value: number | GalleryImage;
       } | null)
     | ({
         relationTo: 'shows';
@@ -186,10 +190,14 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "gallery-images_select".
  */
-export interface MediaSelect<T extends boolean = true> {
+export interface GalleryImagesSelect<T extends boolean = true> {
   alt?: T;
+  orientation?: T;
+  order?: T;
+  visible?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
