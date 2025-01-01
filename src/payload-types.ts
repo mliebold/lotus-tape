@@ -120,8 +120,8 @@ export interface Show {
  */
 export interface Music {
   id: number;
-  trackEmbed?: string | null;
-  releaseDate?: string | null;
+  soundcloudURL: string;
+  releaseDate: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -244,7 +244,7 @@ export interface ShowsSelect<T extends boolean = true> {
  * via the `definition` "music_select".
  */
 export interface MusicSelect<T extends boolean = true> {
-  trackEmbed?: T;
+  soundcloudURL?: T;
   releaseDate?: T;
   updatedAt?: T;
   createdAt?: T;
