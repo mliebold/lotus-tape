@@ -14,6 +14,7 @@ export interface Config {
     users: User;
     'gallery-images': GalleryImage;
     shows: Show;
+    music: Music;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -23,6 +24,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     'gallery-images': GalleryImagesSelect<false> | GalleryImagesSelect<true>;
     shows: ShowsSelect<false> | ShowsSelect<true>;
+    music: MusicSelect<false> | MusicSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -114,6 +116,17 @@ export interface Show {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "music".
+ */
+export interface Music {
+  id: number;
+  trackEmbed?: string | null;
+  releaseDate?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -130,6 +143,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'shows';
         value: number | Show;
+      } | null)
+    | ({
+        relationTo: 'music';
+        value: number | Music;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -219,6 +236,16 @@ export interface ShowsSelect<T extends boolean = true> {
   venue?: T;
   location?: T;
   ticketLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "music_select".
+ */
+export interface MusicSelect<T extends boolean = true> {
+  trackEmbed?: T;
+  releaseDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }
