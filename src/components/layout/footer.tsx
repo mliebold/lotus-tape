@@ -5,6 +5,8 @@ import logo from "@/public/logo.png";
 import Image from "next/image";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <section className="py-16">
       <div className="container mx-auto">
@@ -93,7 +95,7 @@ const Footer = () => {
             </div> */}
           </div>
           <div className="mt-20 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
-            <p>© 2024 Lotus Tape. All rights reserved.</p>
+            <p>© {year} Lotus Tape. All rights reserved.</p>
             <ul className="flex justify-center gap-4 lg:justify-start">
               <li className="hover:text-primary">
                 <a href="#"> Terms and Conditions</a>
