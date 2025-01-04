@@ -50,17 +50,12 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
   });
 
   return (
-    // <section
-    //   className={`py-4 w-full z-10 ${mode == "General" || isScrolled ? "relative" : "absolute"}`}
-    // >
     <section
       className={`${isScrolled || mode == "General" ? "bg-background border-b" : "bg-transparent"} fixed top-0 left-0 w-full py-4 z-50 transition-all duration-300`}
     >
       <div className="container mx-auto">
         <nav className="hidden justify-between lg:flex">
-          {/* <div className="flex items-center gap-6"> */}
           <div className="flex items-center gap-2">
-            {/* <div className="h-14 relative"> */}
             <Link href="/">
               <Image
                 src={logo}
@@ -69,8 +64,6 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                 alt="Lotus Tape Logo"
               />
             </Link>
-            {/* </div> */}
-            {/* <span className="text-xl font-bold">Lotus Tape</span> */}
           </div>
           <div className="flex items-center">
             {navigation.map((nav) => (
@@ -81,7 +74,7 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                   navigationMenuTriggerStyle,
                   buttonVariants({
                     variant: "ghost",
-                  })
+                  }),
                 )}
                 href={nav.href}
               >
@@ -89,16 +82,10 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
               </a>
             ))}
           </div>
-          {/* </div> */}
-          {/* <div className="flex gap-2">
-            <Button variant="outline">Log in</Button>
-            <Button>Sign up</Button>
-          </div> */}
         </nav>
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              {/* <div className="w-14 h-10 sm:w-20 sm:h-14 relative"> */}
               <Link href="/">
                 <Image
                   src={logo}
@@ -107,7 +94,6 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                   alt="Lotus Tape Logo"
                 />
               </Link>
-              {/* </div> */}
             </div>
             <Sheet>
               <SheetTrigger asChild>
@@ -142,76 +128,6 @@ const Navbar = ({ mode }: { mode: "Landing" | "General" }) => {
                     </SheetClose>
                   ))}
                 </div>
-                {/* <div className="border-t pt-4">
-                  <div className="grid grid-cols-2 justify-start">
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Press
-                    </a>
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Contact
-                    </a>
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Imprint
-                    </a>
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Sitemap
-                    </a>
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Legal
-                    </a>
-                    <a
-                      className={cn(
-                        buttonVariants({
-                          variant: "ghost",
-                        }),
-                        "justify-start text-muted-foreground"
-                      )}
-                      href="#"
-                    >
-                      Cookie Settings
-                    </a>
-                  </div>
-                </div> */}
               </SheetContent>
             </Sheet>
           </div>
