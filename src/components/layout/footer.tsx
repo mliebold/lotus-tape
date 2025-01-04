@@ -65,7 +65,7 @@ const Footer = () => {
             <p>© {year} Lotus Tape. All rights reserved.</p>
             <ul className="flex justify-center gap-4 lg:justify-start">
               <li className="hover:text-primary">
-                <a href="#"> Privacy Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
             </ul>
           </div>
