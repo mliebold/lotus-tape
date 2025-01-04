@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Footer from "@/components/layout/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Lotus Tape",
@@ -23,6 +24,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
           <Footer />
         </ThemeProvider>
       </body>
