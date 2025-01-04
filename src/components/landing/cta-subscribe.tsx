@@ -1,5 +1,4 @@
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import SubscribeForm from "../forms/subscribe";
 
 export default function CTASubscribe() {
   return (
@@ -16,10 +15,7 @@ export default function CTASubscribe() {
             </p>
           </div>
           <div className="shrink-0">
-            <div className="flex flex-col justify-center gap-2 sm:flex-row">
-              <Input placeholder="Enter your email" className="lg:min-w-72" />
-              <Button>Subscribe</Button>
-            </div>
+            <SubscribeForm />
           </div>
         </div>
       </div>
