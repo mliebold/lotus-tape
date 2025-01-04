@@ -7,3 +7,7 @@ export const contactFormSchema = z.object({
   email: z.string().min(1, { message: "Please enter your email." }).email(),
   message: z.string().min(1, { message: "Please enter a message." }),
 });
+
+export const subscribeFormSchema = z.object({
+  email: z.string().min(1, { message: "Please enter your email." }).email(),
+});
