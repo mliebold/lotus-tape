@@ -30,7 +30,6 @@ export default function SubscribeForm() {
     values: z.infer<typeof subscribeFormSchema>,
   ) => {
     const result: ActionResponse = await subscribeEmail(values);
-    console.log(result.status);
     if (result.status === 201) {
       form.reset();
       toast({

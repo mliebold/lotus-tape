@@ -31,6 +31,13 @@ export async function subscribeEmail(
     );
 
     if (response.status >= 400) {
+      const responseData = await response.json();
+      if (responseData.title === "Member Exists") {
+        return {
+          status: response.status,
+          message: `${values.email} is already subscribed.`,
+        } as ActionResponse;
+      }
       return {
         status: response.status,
         message: "There was an error subscribing.",
