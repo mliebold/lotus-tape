@@ -1,4 +1,9 @@
-import { FaInstagram, FaSoundcloud, FaSpotify } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaSoundcloud,
+  FaSpotify,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiApplemusic } from "react-icons/si";
 import logo from "@/public/logo.png";
@@ -9,6 +14,10 @@ const socials = [
   {
     link: "https://www.instagram.com/lotustape",
     icon: <FaInstagram className="size-6" />,
+  },
+  {
+    link: "https://www.facebook.com/lotustapemusic",
+    icon: <FaFacebook className="size-6" />,
   },
   {
     link: "https://x.com/lotustape",
