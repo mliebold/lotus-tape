@@ -20,13 +20,19 @@ export default function ContactPage() {
                 Contact Details
               </h3>
               <ul className="ml-4 list-disc">
-                <li>
-                  <span className="font-bold">Email: </span>
+                <li className="no-wrap">
+                  <span className="font-bold">Management: </span>
                   <a
                     href="mailto:primalproductionsmgmt@gmail.com"
                     className="underline"
                   >
                     primalproductionsmgmt@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <span className="font-bold">Promo/Personal: </span>
+                  <a href="mailto:thelotustape@gmail.com" className="underline">
+                    thelotustape@gmail.com
                   </a>
                 </li>
               </ul>
