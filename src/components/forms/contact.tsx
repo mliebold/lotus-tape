@@ -15,8 +15,11 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { ActionResponse } from "@/lib/types";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactForm() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -26,10 +29,31 @@ export default function ContactForm() {
     },
   });
 
+  const handleFormSubmission = async (
+    values: z.infer<typeof contactFormSchema>,
+  ) => {
+    const result: ActionResponse = await sendEmail(values);
+    if (result.status === 201) {
+      form.reset();
+      toast({
+        title: "Form submitted successfully!",
+        description: result.message,
+        duration: 10000,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: result.message,
+        duration: 10000,
+      });
+    }
+  };
+
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(sendEmail)}
+        onSubmit={form.handleSubmit(handleFormSubmission)}
         className="mx-auto flex max-w-screen-md w-full sm:w-auto sm:min-w-96 flex-col gap-6 rounded-lg border py-10 px-5 sm:px-10"
       >
         <FormField

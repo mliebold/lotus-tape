@@ -58,7 +58,7 @@ export async function subscribeEmail(
     }
     return {
       status: 500,
-      message: "An unknown error has occured",
+      message: "An unknown error has occurred",
     } as ActionResponse;
   }
 }
