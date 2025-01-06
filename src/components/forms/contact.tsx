@@ -15,8 +15,11 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function ContactForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -26,10 +29,17 @@ export default function ContactForm() {
     },
   });
 
+  const handleFormSubmit = async (
+    values: z.infer<typeof contactFormSchema>,
+  ) => {
+    setIsLoading(true);
+    sendEmail(values);
+    setIsLoading(false);
+  };
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(sendEmail)}
+        onSubmit={form.handleSubmit(handleFormSubmit)}
         className="mx-auto flex max-w-screen-md w-full sm:w-auto sm:min-w-96 flex-col gap-6 rounded-lg border py-10 px-5 sm:px-10"
       >
         <FormField
@@ -72,7 +82,7 @@ export default function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full">
-          Send Message
+          {isLoading && <Loader2 className="animate-spin" />}Send Message
         </Button>
       </form>
     </Form>
