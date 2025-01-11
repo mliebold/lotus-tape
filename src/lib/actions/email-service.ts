@@ -3,7 +3,7 @@
 import {
   SESClient,
   SESClientConfig,
-  SendEmailCommand,
+  SendTemplatedEmailCommand,
 } from "@aws-sdk/client-ses";
 import { ActionResponse } from "../types";
 import { contactFormSchema } from "../schemas";
@@ -19,40 +19,41 @@ const SES_CONFIG: SESClientConfig = {
 
 const sesClient = new SESClient(SES_CONFIG);
 
+const TEMPLATE_NAME = "LotusTapeContactFormSubmissionTemplate";
+
 const source = process.env.EMAIL_SOURCE;
 const to = process.env.EMAIL_TO;
 const cc = process.env.EMAIL_CC;
 
-export async function sendEmail(values: z.infer<typeof contactFormSchema>) {
-  const params = {
-    Source: source || "",
+function createContactTemplateEmail(
+  values: z.infer<typeof contactFormSchema>,
+  templateName: string,
+) {
+  return new SendTemplatedEmailCommand({
     Destination: {
-      CcAddresses: cc ? [cc] : undefined,
       ToAddresses: to ? [to] : undefined,
+      CcAddresses: cc ? [cc] : undefined,
     },
     ReplyToAddresses: [values.email],
-    Message: {
-      Body: {
-        Html: {
-          Charset: "UTF-8",
-          Data: `<h2>This is a form submission from https://www.lotustape.com/contact</h2><p><strong>Name:</strong> ${values.name}</p><p><strong>Email:</strong> ${values.email}</p><p><strong>Message:</strong> ${values.message}</p>`,
-        },
-        Text: {
-          Charset: "UTF-8",
-          Data: `<h2>This is a form submission from https://www.lotustape.com/contact\nName: ${values.name}\nEmail: ${values.email}\nMessage: ${values.message}`,
-        },
+    TemplateData: JSON.stringify({
+      contact: {
+        name: values.name,
+        email: values.email,
+        message: values.message,
       },
-      Subject: {
-        Charset: "UTF-8",
-        Data: "Contact Submission From lotustape.com",
-      },
-    },
-  };
+    }),
+    Source: source,
+    Template: templateName,
+  });
+}
 
+export async function sendEmail(values: z.infer<typeof contactFormSchema>) {
   try {
-    const sendEmailCommand = new SendEmailCommand(params);
-    const result = await sesClient.send(sendEmailCommand);
-
+    // const sendEmailCommand = new SendEmailCommand(params);
+    const result = await sesClient.send(
+      createContactTemplateEmail(values, TEMPLATE_NAME),
+    );
+    console.log(result);
     const statusCode = result.$metadata.httpStatusCode;
 
     if (statusCode && statusCode >= 400) {
