@@ -6,7 +6,7 @@ dotenv.config({ path: ".env.local" });
 
 const SES_CONFIG = {
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
+    accessKeyId: process.env.AWS_IAM_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
   region: process.env.AWS_SES_REGION,
