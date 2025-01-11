@@ -36,7 +36,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/lib/ses/create-ses-template.js"  ],
   "exclude": [
     "node_modules"
   ]
