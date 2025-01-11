@@ -9,6 +9,12 @@ import { ActionResponse } from "../types";
 import { contactFormSchema } from "../schemas";
 import { z } from "zod";
 
+console.log("AWS Credentials:", {
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
+});
+
 const SES_CONFIG: SESClientConfig = {
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY as string,
