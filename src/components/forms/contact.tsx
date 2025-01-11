@@ -106,8 +106,8 @@ export default function ContactForm() {
     <div className="flex flex-col gap-5 items-center lg:items-start">
       <h3 className="text-2xl">Thank you for reaching out!</h3>
       <p className="text-muted-foreground">
-        Your form submission has been received and we'll get back to you as soon
-        as possible.
+        Your form submission has been received and we&#39;ll get back to you as
+        soon as possible.
       </p>
       <div>
         <Button asChild>
