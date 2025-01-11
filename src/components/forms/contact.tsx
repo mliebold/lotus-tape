@@ -14,6 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { Loader2 } from "lucide-react";
 import { ActionResponse } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -21,6 +22,7 @@ import Link from "next/link";
 import { sendEmail } from "@/lib/actions/email-service";
 
 export default function ContactForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof contactFormSchema>>({
@@ -35,6 +37,7 @@ export default function ContactForm() {
   const handleFormSubmission = async (
     values: z.infer<typeof contactFormSchema>,
   ) => {
+    setIsLoading(true);
     const result: ActionResponse = await sendEmail(values);
     if (result.status === 200) {
       form.reset();
@@ -47,6 +50,7 @@ export default function ContactForm() {
         duration: 10000,
       });
     }
+    setIsLoading(false);
   };
 
   if (!formSubmitted)
@@ -96,7 +100,7 @@ export default function ContactForm() {
             )}
           />
           <Button type="submit" className="w-full">
-            Send Message
+            {isLoading && <Loader2 className="animate-spin" />}Send Message
           </Button>
         </form>
       </Form>

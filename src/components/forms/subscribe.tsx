@@ -16,8 +16,11 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { ActionResponse } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function SubscribeForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof subscribeFormSchema>>({
     resolver: zodResolver(subscribeFormSchema),
@@ -29,6 +32,7 @@ export default function SubscribeForm() {
   const handleFormSubmission = async (
     values: z.infer<typeof subscribeFormSchema>,
   ) => {
+    setIsLoading(true);
     const result: ActionResponse = await subscribeEmail(values);
     if (result.status === 201) {
       form.reset();
@@ -45,6 +49,7 @@ export default function SubscribeForm() {
         duration: 10000,
       });
     }
+    setIsLoading(false);
   };
 
   return (
@@ -65,7 +70,10 @@ export default function SubscribeForm() {
             </FormItem>
           )}
         />
-        <Button>Subscribe</Button>
+        <Button>
+          {isLoading && <Loader2 className="animate-spin" />}
+          Subscribe
+        </Button>
       </form>
     </Form>
   );
