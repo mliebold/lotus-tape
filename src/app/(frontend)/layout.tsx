@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     description: "Official website for Lotus Tape.",
     images: [
       {
-        url: "logo.png",
+        url: "/logo.png",
         alt: "Lotus Tape Logo",
       },
     ],
-    url: "www.lotustape.com",
+    url: "https://www.lotustape.com",
   },
 };
 
