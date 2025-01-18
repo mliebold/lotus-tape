@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import Footer from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Metadata } from "next";
-import fullLogo from "@/public/logo.png";
+import lotusImage from "@/public/lotus-tape-stage-dark.jpg";
 
 export const metadata: Metadata = {
   title: "Lotus Tape",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Official website for Lotus Tape.",
     images: [
       {
-        url: fullLogo.src,
+        url: lotusImage.src,
       },
     ],
     url: "https://www.lotustape.com",
