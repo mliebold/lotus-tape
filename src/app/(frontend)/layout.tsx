@@ -1,12 +1,22 @@
-import type { Metadata } from "next";
 import "@/app/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Footer from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Lotus Tape",
   description: "Official website for Lotus Tape.",
+  openGraph: {
+    title: "Lotus Tape",
+    description: "Official website for Lotus Tape.",
+    images: [
+      {
+        url: "logo.png",
+        alt: "Lotus Tape Logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
