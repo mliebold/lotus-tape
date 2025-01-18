@@ -3,6 +3,8 @@ import { JSDOM } from "jsdom";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 
+export const dynamic = "force-dynamic";
+
 const payload = await getPayload({ config: configPromise });
 
 export default async function MusicPage() {
@@ -19,7 +21,7 @@ export default async function MusicPage() {
       const oEmbedURL = `https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(track.soundcloudURL)}&auto_play=false&maxheight=150px`;
       const result = await fetch(oEmbedURL);
       return await result.json();
-    })
+    }),
   );
 
   const window = new JSDOM("").window;
