@@ -16,6 +16,7 @@ export const metadata: Metadata = {
         alt: "Lotus Tape Logo",
       },
     ],
+    url: "www.lotustape.com",
   },
 };
 
