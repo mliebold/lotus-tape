@@ -22,6 +22,12 @@ const nextConfig = {
         port: "",
         pathname: "/api/gallery-images/**",
       },
+      {
+        protocol: "https",
+        hostname: "lotustape.com",
+        port: "",
+        pathname: "/api/gallery-images/**",
+      },
     ],
   },
 };
