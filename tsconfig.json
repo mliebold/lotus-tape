@@ -35,8 +35,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/lib/ses/create-ses-template.js"  ],
+    ".next/types/**/*.ts",
+    "src/lib/ses/create-ses-template.js",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
