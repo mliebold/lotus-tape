@@ -30,7 +30,6 @@ const nextConfig = {
       },
     ],
   },
-  serverExternalPackages: ['jsdom']
 };
 
 export default withPayload(nextConfig);
